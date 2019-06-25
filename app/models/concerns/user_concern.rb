@@ -10,8 +10,4 @@ module UserConcern
   def user
     User.find(id)
   end
-
-  def readonly?
-    true
-  end
 end

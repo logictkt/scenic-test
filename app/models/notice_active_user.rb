@@ -1,4 +1,4 @@
-class DeletedUser < ApplicationRecord
+class NoticeActiveUser < ApplicationRecord
   include UserConcern
   include Readonly
 end

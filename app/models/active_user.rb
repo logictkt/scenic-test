@@ -1,7 +1,4 @@
 class ActiveUser < ApplicationRecord
   include UserConcern
-
-  def readonly?
-    true
-  end
+  include Readonly
 end

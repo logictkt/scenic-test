@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_25_041120) do
+ActiveRecord::Schema.define(version: 2019_06_25_042848) do
 
   create_table "notification_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -34,5 +34,11 @@ ActiveRecord::Schema.define(version: 2019_06_25_041120) do
   SQL
   create_view "deleted_users", sql_definition: <<-SQL
       select `users`.`id` AS `id`,`users`.`name` AS `name`,`users`.`status` AS `status`,`users`.`created_at` AS `created_at`,`users`.`updated_at` AS `updated_at` from `users` where (`users`.`status` = 99)
+  SQL
+  create_view "notice_active_users", sql_definition: <<-SQL
+      select `users`.`id` AS `id`,`users`.`name` AS `name`,`users`.`status` AS `status`,`users`.`created_at` AS `created_at`,`users`.`updated_at` AS `updated_at` from (`users` left join `notification_settings` on((`notification_settings`.`user_id` = `users`.`id`))) where (isnull(`notification_settings`.`id`) or (`notification_settings`.`enabled` = TRUE))
+  SQL
+  create_view "notice_disabled_users", sql_definition: <<-SQL
+      select `users`.`id` AS `id`,`users`.`name` AS `name`,`users`.`status` AS `status`,`users`.`created_at` AS `created_at`,`users`.`updated_at` AS `updated_at` from (`users` join `notification_settings` on((`notification_settings`.`user_id` = `users`.`id`))) where (`notification_settings`.`enabled` = FALSE)
   SQL
 end

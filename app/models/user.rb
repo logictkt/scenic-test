@@ -4,4 +4,8 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_one :notification_setting
+
+  def notice_enabled?
+    notification_setting.blank? || notification_setting.enabled
+  end
 end
