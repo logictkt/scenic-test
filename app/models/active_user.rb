@@ -14,4 +14,10 @@ class ActiveUser < ApplicationRecord
   include Readonly
 
   has_one :notification_setting, foreign_key: :user_id
+
+  def convert_user
+    user = self.user
+    user.attributes = self.attributes
+    user
+  end
 end
