@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<h1>DeletedUsers</h1>
 
 <table>
   <thead>
@@ -16,19 +16,11 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.status %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<ul>
-  <li><%= link_to 'ActiveUsers', active_users_path %></li>
-  <li><%= link_to 'DeletedUsers', deleted_users_path %></li>
-</ul>
 
 <%= link_to 'New User', new_user_path %>

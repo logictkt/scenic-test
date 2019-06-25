@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_25_014824) do
+ActiveRecord::Schema.define(version: 2019_06_25_021455) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -19,4 +19,11 @@ ActiveRecord::Schema.define(version: 2019_06_25_014824) do
     t.datetime "updated_at", null: false
   end
 
+
+  create_view "active_users", sql_definition: <<-SQL
+      select `users`.`id` AS `id`,`users`.`name` AS `name`,`users`.`status` AS `status`,`users`.`created_at` AS `created_at`,`users`.`updated_at` AS `updated_at` from `users` where (`users`.`status` = 0)
+  SQL
+  create_view "deleted_users", sql_definition: <<-SQL
+      select `users`.`id` AS `id`,`users`.`name` AS `name`,`users`.`status` AS `status`,`users`.`created_at` AS `created_at`,`users`.`updated_at` AS `updated_at` from `users` where (`users`.`status` = 99)
+  SQL
 end
