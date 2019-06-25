@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## User
+ユーザーテーブル
 
-Things you may want to cover:
+* 名前
+* アクティブ状況
 
-* Ruby version
+## ActiceUser
+アクティブなユーザーのみを管理するview
 
-* System dependencies
+## DeletedUser
+アクディブでないユーザーのみを管理するview
 
-* Configuration
+## NotificationSetting
+通知を管理する
 
-* Database creation
+* アクティブ状況
 
-* Database initialization
+存在しない OR enabled が true なものは、通知する
 
-* How to run the test suite
+## NoticeActiveUser
+通知するアクティブなユーザーを管理するview
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## NoticeDisabledUser
+通知するアクディブでないユーザーを管理するview
