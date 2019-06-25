@@ -12,4 +12,6 @@
 class ActiveUser < ApplicationRecord
   include UserConcern
   include Readonly
+
+  has_one :notification_setting, foreign_key: :user_id
 end
