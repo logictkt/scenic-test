@@ -10,5 +10,13 @@
   <%= @user.status %>
 </p>
 
+<p>
+  <strong>NotificationSetting:</strong>
+  <%= @user.notification_setting.blank? || @user.notification_setting.enabled %>
+  <br>
+  <%= link_to 'change', user_notification_setting_path(@user), method: :patch %>
+</p>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

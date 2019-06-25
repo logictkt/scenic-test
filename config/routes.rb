@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'users#index'
-  resources :users
+  resources :users do
+    resource :notification_setting, only: :update
+  end
 
   resources :active_users, only: :index
   resources :deleted_users, only: :index
