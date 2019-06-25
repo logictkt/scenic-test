@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+       MYSQL_ROOT_PASSWORD: 'test'
+    ports:
+      - '3307:3306'
+    volumes:
+      - ./.localdocker/mysql5.7/lib/mysql:/var/lib/mysql
+      - ./.localdocker/mysql5.7/conf:/etc/mysql/conf.d
+      - ./.localdocker/mysql5.7/log:/var/log/mysql
